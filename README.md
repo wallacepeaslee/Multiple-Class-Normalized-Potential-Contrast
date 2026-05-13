@@ -1,6 +1,6 @@
 # Multi-Class Normalized Potential Contrast
 
-This repository includes implementations for (Normalized) Potential Contrast and its generalizations to multiple classes [1]. If you use this repository, please cite our paper [1] (https://arxiv.org/abs/2505.01388), which has been accepted to EUSIPCO. Additional technical details and definitions can also be found in this paper.
+This repository includes implementations for (Normalized) Potential Contrast and its generalizations to multiple classes [1]. If you use this repository, please cite our paper [1] ([https://arxiv.org/abs/2505.01388](https://ieeexplore.ieee.org/document/11226174)). Additional technical details and definitions can also be found in this paper.
 
 Potential Contrast was introduced in [2], and PC_Original.py follows the algorithms for computation given e.g. in [3].
 
@@ -11,7 +11,7 @@ Simply update the filepaths to a reference image and class labels/masks to use. 
 
 ## References
 
-[1] W. Peaslee, A. Breger, & C.-B. Schönlieb,"Potential Contrast: Properties, Equivalences, and Generalization to Multiple Classes," EUSIPCO, 2025.
+[1] W. Peaslee, A. Breger and C. -B. Schönlieb, "Potential Contrast: Properties, Equivalences, and Generalization to Multiple Classes," 2025 33rd European Signal Processing Conference (EUSIPCO), Palermo, Italy, 2025, pp. 716-720, doi: 10.23919/EUSIPCO63237.2025.11226174.
 
 [2] A. Shaus, S. Faigenbaum-Golovin, B. Sober, and E. Turkel, “Potential contrast–a new image quality measure,” Electronic Imaging, vol. 29, pp. 52–58, 2017.
 
