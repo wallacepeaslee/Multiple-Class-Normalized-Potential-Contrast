@@ -4,7 +4,7 @@ This repository includes implementations for (Normalized) Potential Contrast and
 
 Potential Contrast was introduced in \[2], and PC\_Original.py follows the algorithms for computation given e.g. in \[3].
 
-Our new efficient algorithms for potential contrast and our generalization, multi-class normalized potential contrast, are included in Multiple\_Source\_NPC.py. The only requirements for running are the python packages are the Python Imaging Library (PIL/Pillow) and NumPy.
+Our new efficient algorithms for potential contrast and our generalization, multi-class normalized potential contrast, are included in Multiple\_Source\_NPC.py. The only requirements for running are the python packages are the Python Imaging Library (PIL/Pillow) and NumPy. Conversion from python to matlab and debugging were assisted by Claude Sonnet 5.
 
 Simply update the filepaths to a reference image and class labels/masks to use (such as those in the Example folder). For  normalized potential contrast, set parameters depending on color bit-depth.
 

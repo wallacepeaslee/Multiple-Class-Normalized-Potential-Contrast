@@ -34,6 +34,9 @@ save_filepath: the filepath where a segmentation map can be saved.
     at that value, the segmentation image is arbitrary.
     Note: this is NOT generally designed to be used as segmentation, but can 
     be diagnostic for understanding the numeric NPC value.
+
+Pixels above maximum defined data range are set to that maximum and pixels
+below the minimum defined by daata range are set to that minimum
 '''
 classMasks_filepaths = ['', '', ''] #list of filepaths to masks
 invertMasks = False #if masks have labeled pixels in black, set this to True
@@ -57,7 +60,7 @@ def normArray(arr):
     return (arr - arrMin)/(arrMax - arrMin)
 
 
-assert dataRange is None or (dataRange[0] < dataRange[1] and len(dataRange) == 2), 'please give data range in the format (min, max).'
+assert dataRange is None or (len(dataRange) == 2 and dataRange[0] < dataRange[1]), 'please give data range in the format (min, max).'
 
 numClasses = len(classMasks_filepaths)
 try:
@@ -67,14 +70,17 @@ try:
         maskArrs = [np.array(Image.open(x).convert('L')) != 0 for x in classMasks_filepaths]
     refArr = np.array(Image.open(referenceImage_filepath).convert('L'))
 except IOError:
-    print('Please input valid fle names.')
+    print('Please input valid file names.')
+    raise
 assert (numClasses > 1), 'Please supply more than 1 mask.'
+for m in maskArrs:
+    assert np.sum(m) > 0, 'Please ensure your mask is not empty'
 
 if dataRange is None:
     dataRange = (np.min(refArr), np.max(refArr))
     
 #begin computation of NPC
-histograms = [np.histogram(refArr[x], bins=numBins, range=dataRange, density=False) for x in maskArrs]
+histograms = [np.histogram(np.clip(refArr[x], dataRange[0], dataRange[1]), bins=numBins, range=dataRange, density=False) for x in maskArrs]
 distributions = [x[0].astype('float')/np.sum(x[0]) for x in histograms] 
 
 
@@ -103,11 +109,3 @@ try:
 except IOError:
     print('Please input valid output filepath.')
     
-
-
-
-    
-    
-
-
-
