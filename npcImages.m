@@ -1,6 +1,6 @@
-function npcValue = npc(image_filepath, mask_filepaths, num_bins, min_val, max_val)
-%   Computes the NPC value for a reference image given a set of class
-%   masks, following the paper:
+function npcValueImages = npcImages(image_filepath, mask_filepaths, num_bins, min_val, max_val)
+%   Computes the NPC value for a reference image given a set of class,
+%   masks, which can be in rgb format for convenience following the paper:
 %   W. Peaslee, A. Breger and C. -B. Schönlieb,
 %   "Potential Contrast: Properties, Equivalences, 
 %   Generalization to Multiple Classes," 
@@ -37,6 +37,6 @@ function npcValue = npc(image_filepath, mask_filepaths, num_bins, min_val, max_v
 
     distMatrix = cell2mat(distributions');
     maxPerBin = max(distMatrix, [], 1);
-    npcValue = (sum(maxPerBin) - 1) / (length(mask_filepaths) - 1);
+    npcValueImages = (sum(maxPerBin) - 1) / (length(mask_filepaths) - 1);
 
 end
